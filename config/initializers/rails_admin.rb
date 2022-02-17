@@ -39,4 +39,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Usuario' do 
+    fields :nome, :cpf, :email, :telefone, :password, :password_confirmation, :ativo
+    
+    field :perfil, :enum do
+      enum { Usuario::PERFIL }
+    end
+  end
+
 end
