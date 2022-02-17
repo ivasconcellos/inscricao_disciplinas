@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_012902) do
+ActiveRecord::Schema.define(version: 2022_02_17_013324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 2022_02_17_012902) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "turmas", force: :cascade do |t|
+    t.string "nome", null: false
+    t.boolean "ativa", default: true
+    t.bigint "curso_id", null: false
+    t.bigint "modulo_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curso_id"], name: "index_turmas_on_curso_id"
+    t.index ["modulo_id"], name: "index_turmas_on_modulo_id"
+  end
+
   create_table "usuarios", force: :cascade do |t|
     t.string "nome", default: "", null: false
     t.string "cpf", default: "", null: false
@@ -69,4 +80,6 @@ ActiveRecord::Schema.define(version: 2022_02_17_012902) do
   end
 
   add_foreign_key "cursos", "locais"
+  add_foreign_key "turmas", "cursos"
+  add_foreign_key "turmas", "modulos"
 end

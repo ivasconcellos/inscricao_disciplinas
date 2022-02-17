@@ -1,6 +1,6 @@
-class Curso < ApplicationRecord
-  belongs_to :local
-  has_many :turmas
+class Turma < ApplicationRecord
+  belongs_to :curso
+  belongs_to :modulo
 
   validates_presence_of :nome
   validates_uniqueness_of :nome
