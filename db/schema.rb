@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_011550) do
+ActiveRecord::Schema.define(version: 2022_02_17_012902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 2022_02_17_011550) do
   create_table "locais", force: :cascade do |t|
     t.string "nome", null: false
     t.boolean "ativo", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "modulos", force: :cascade do |t|
+    t.string "nome"
+    t.boolean "ativo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
